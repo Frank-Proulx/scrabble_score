@@ -6,4 +6,10 @@ describe('Scrabbler#scrabble_score') do
     game = Scrabbler.new()
     expect(game.scrabble('a')).to(eq(1))
   end
+
+  it("returns a scrabble score for a word") do
+    game = Scrabbler.new()
+    expect(game.scrabble('barbeque')).to(eq(21))
+  end
+
 end

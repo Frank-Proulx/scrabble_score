@@ -4,7 +4,12 @@ class Scrabbler
   end
 
   def scrabble(word)
-    @scores.fetch(word)
+    scored = word.split("")
+    total = 0
+    scored.each do |letter|
+      total += @scores.fetch(letter.downcase)
+    end
+    total
   end
 
 end
