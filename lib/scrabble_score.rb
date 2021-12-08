@@ -4,7 +4,7 @@ class Scrabbler
   end
 
   def scrabble(word)
-    scored = word.split("")
+    scored = word.split("").delete_if{|x| x.match(/[^a-z]/i)}
     total = 0
     scored.each do |letter|
       total += @scores.fetch(letter.downcase)
@@ -12,4 +12,24 @@ class Scrabbler
     total
   end
 
+  # def scrabble(selection)
+  #   worded = selection.split("")
+  #   scored = []
+  #   worded.each do |character|
+  #     if (character.downcase) != (character.upcase)
+  #       scored.push(character)
+  #     end
+  #   end
+  #   total = 0
+  #   scored.each do |letter|
+  #     total += @scores.fetch(letter.downcase)
+  #   end
+  #   total
+  # end
 end
+
+  book = Scrabbler.new()
+  file = File.open("two_cities.txt")
+  file_data = file.read
+  puts book.scrabble(file_data) 
+  file.close
